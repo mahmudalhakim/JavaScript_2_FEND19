@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Exempel 6</title>
+</head>
+<body>
+    <h1>Exempel 6</h1>
+    <h2>jQuery Selectors (Selektorer/Väljare)</h2>
+    <h3>Groups of selector</h3>
+
+    <h4>Rubrik 4</h4>
+    <h5>Rubrik 5</h5>
+    <h6>Rubrik 6</h6>
+    
+    <p class="demo1">Stycke 1</p>
+    <p class="demo1">Stycke 2</p>
+    
+    <div id="demo2">En Div</div>
+
+    <script src="jquery-3.4.1.js"> </script>
+    
+    <script>
+        $(document).ready(function(){
+            
+            $("h4,h5,h6,.demo1,#demo2").hide();
+
+        });
+        
+        </script>
+
+</body>
+</html>

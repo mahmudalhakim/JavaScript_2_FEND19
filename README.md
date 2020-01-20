@@ -1,1 +1,3 @@
-# JavaScript_2_FEND19
+# JavaScript 2 FEND19
+## Lärare: Mahmud Al Hakim
+## Nackademin - Stockholm

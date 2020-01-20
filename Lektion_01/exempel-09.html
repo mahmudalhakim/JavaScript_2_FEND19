@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Exempel 9</title>
+
+    <style>
+
+        .hot{
+            color:hotpink;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1>Exempel 9</h1>
+    <h2>Caching</h2>
+
+    <ul>
+        <li>Ett</li>
+        <li>Två</li>
+        <li>Tre</li>
+    </ul>
+
+    
+    <script src="jquery-3.4.1.js"> </script>
+    
+    <script>
+        $(document).ready(function(){
+            
+            let $myListItems = $('li');
+            
+            // Test
+            console.log($myListItems.toArray());
+
+            // Ändra textens färg 
+            $myListItems.addClass('hot');
+
+        });
+        
+        </script>
+
+</body>
+</html>

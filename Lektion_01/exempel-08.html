@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Exempel 8</title>
+</head>
+<body>
+    <h1>Exempel 8</h1>
+    <h2>This Selector</h2>
+
+    <p>1. Klicka här för att dölja mig.</p>
+    <p>2. Klicka här för att dölja mig.</p>
+    <p>3. Klicka här för att dölja mig.</p>
+    <p>4. Klicka här för att dölja mig.</p>
+
+    
+    <script src="jquery-3.4.1.js"> </script>
+    
+    <script>
+        $(document).ready(function(){
+            
+            $("p").click(function(){
+                $(this).hide();
+            });
+
+        });
+        
+        </script>
+
+</body>
+</html>

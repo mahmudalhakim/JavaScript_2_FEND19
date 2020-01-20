@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Exempel 7</title>
+</head>
+<body>
+    <h1>Exempel 7</h1>
+    <h2>jQuery Selectors (Selektorer/Väljare)</h2>
+    <h3>Decendent combinator (Arv-selektor)</h3>
+
+    <a href="#">Länk 1</a>
+    <a href="#">Länk 2</a>
+    <a href="#">Länk 3</a>
+    
+    <ul>
+        <li><a href="#">Länk i en lista 1</a></li>
+        <li><a href="#">Länk i en lista 2</a></li>
+        <li><a href="#">Länk i en lista 3</a></li>
+    </ul>
+
+    
+    <script src="jquery-3.4.1.js"> </script>
+    
+    <script>
+        $(document).ready(function(){
+            
+            $("li a").hide();
+
+        });
+        
+        </script>
+
+</body>
+</html>
