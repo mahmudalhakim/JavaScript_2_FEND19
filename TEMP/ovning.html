@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Inköpslista</title>
+</head>
+<body class="container">
+    <h1 class="text-center display-3">Inköpslista</h1>
+    <h2>Vad vill du handla idag?</h2>
+
+    <div class="row mb-3">
+
+        <div class="col-8">
+            <input id="newItem" class="form-control" type="text" autofocus>
+        </div>
+
+        <div class="col-4">
+            <button id="addBtn" class="btn btn-outline-success w-100">Lägg till</button>
+        </div>
+    </div>
+
+
+    <ul id="list" class="list-group"></ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Hämta element
+            let $item   = $('#newItem');
+            let $addBtn = $('#addBtn');
+            let $list   = $('#list');
+
+            // Kör funktionen addItem vid klick på knappen
+            $addBtn.click(addItem);
+
+            // Kör funktionen addItem vid Retur (Enter)
+            $item.keypress(function(e){
+                // console.log(e);
+                if(e.which == 13){
+                    addItem();
+                }
+            });
+            
+            function addItem(){
+                $value = $item.val();
+                if($value !== ''){
+                    $list.append('<li class="list-group-item">'+$value+'</li>');
+                    $item.val('');
+                }
+            }
+    });
+    
+
+    </script>
+</body>
+</html>
