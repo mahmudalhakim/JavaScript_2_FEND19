@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/sketchy/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Exempel 1</title>
+</head>
+<body>
+    <h1>Exempel 1</h1>
+    <h2>CSS i jQuery</h2>
+
+    <p id="demo1">Med jQuery-metoden css() kan man sätta en CSS-egenskap</p>
+    <button id="btn1">Klicka här för att ändra färgen</button>
+    
+    <hr>
+
+    <p id="demo2">Med jQuery-metoden css() kan man sätta flera CSS-egenskaper</p>
+    <button id="btn2">Klicka här för att ändra CSS</button>
+    
+    <hr>
+
+    <p id="demo3">Med jQuery-metoden addClass() kan man 
+         lägga till en CSS-klass</p>
+    <button id="btn3">Klicka här för lägga till en CSS-klass</button>
+    
+    <hr>
+
+    <p id="demo4">Med jQuery-metoden toggleClass() kan man 
+         växla en CSS-klass</p>
+    <button id="btn4">Klicka här för växla en CSS-klass</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        
+        $(document).ready(function(){
+
+            $("#btn1").click(function() {
+                $("#demo1").css("color","gold");
+            });
+
+            $("#btn2").click(function() {
+                $("#demo2").css(
+                    {
+                        "color":"white",
+                        "background-color":"black"
+                    }
+                );
+            });
+
+            $("#btn3").click(function() {
+                $("#demo3").addClass("blue");
+            });
+
+            $("#btn4").click(function() {
+                $("#demo4").toggleClass("blue");
+            });
+
+
+        });
+
+    
+    </script>
+</body>
+</html>

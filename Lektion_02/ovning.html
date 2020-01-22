@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Formulärvalidering</title>
+<link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+/>
+<style>
+    .message {
+    display: none;
+    color: red;
+    }
+</style>
+</head>
+<body class="container">
+<h1>Formulärvalidering med jQuery</h1>
+
+<!-- 
+    Nedanstående källkod från 
+    https://getbootstrap.com/docs/4.3/components/forms/
+-->
+<form>
+    <div class="form-group">
+    <label for="Username">Username</label>
+    <input
+        type="text"
+        class="form-control"
+        id="Username"
+        placeholder="Enter username"
+        required
+    />
+    <p class="message">
+        The username must be att least 3 characters.
+    </p>
+    </div>
+    <div class="form-group">
+    <label for="Password">Password</label>
+    <input
+        type="password"
+        class="form-control"
+        id="Password"
+        placeholder="Password"
+        required
+    />
+    <p class="message">
+        The password must be att least 3 characters.
+    </p>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login">
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+
+// Formulärvalidering
+
+$(document).ready(function() {
+
+// 1. Välj alla inputfält 
+
+let $input = $("input");
+
+// 2. Vid keyup anropa validate
+$input.keyup(validate);
+
+function validate () {
+    // console.log(this);
+    // console.log($(this));
+    // console.log($(this).val());
+    // console.log($(this).val().length);
+
+
+    let len = $(this).val().length;
+    console.log(len);
+
+    // 3. Visa meddelandet som ligger efter det aktuella fältet
+    if(len < 3){
+        $(this)
+        .siblings(".message")
+        .show(500);
+    }
+    else{ // 4. Dölj meddelandet om fältet innehåller minst 3 tecken
+    
+        $(this)
+        .siblings(".message")
+        .hide(500);
+    }
+    
+
+    /*
+$(this).val().length < 3
+    ? // 3. Visa meddelandet som ligger efter det aktuella fältet
+    $(this)
+        .siblings(".message")
+        .show(500)
+    : // 4. Dölj meddelandet om fältet innehåller minst 3 tecken
+    $(this)
+        .siblings(".message")
+        .hide(500);
+*/
+
+    }
+}); // ready
+</script>
+</body>
+</html>
