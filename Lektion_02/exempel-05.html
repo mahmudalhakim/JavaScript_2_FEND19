@@ -2,23 +2,7 @@
 <html>
 <head>
 <title>Filter i jQuery</title>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
+<link rel="stylesheet" href="exempel-05.css">
 </head>
 <body>
 
@@ -61,23 +45,9 @@ tr:nth-child(even) {
   
 <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
 
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-
-    $("#myInput").on("keyup", function() {
-
-        var value = $(this).val().toLowerCase();
-        
-        $("#myTable tr").filter(function() {
-            $(this).toggle(
-                $(this).text().toLowerCase().indexOf(value) > -1
-                )
-            });
-    });
-
-});
-</script>
-
+<script src="exempel-05.js"></script>
 </body>
 </html>
