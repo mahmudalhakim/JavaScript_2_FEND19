@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax demo 2</title>
+</head>
+<body>
+  <h1>Ajax demo 2</h1>
+
+  <button id="loadBtn1">Hämta filen demo1.txt</button>
+  <button id="loadBtn2">Hämta filen demo2.txt</button>
+
+  <p id="demo1"></p>
+  <hr>
+  <p id="demo2"></p>
+
+  <script src="load.js"></script>
+  <script>
+  
+  let loadBtn1 = document.getElementById('loadBtn1');
+  let loadBtn2 = document.getElementById('loadBtn2');
+
+  loadBtn1.addEventListener('click', function(){    
+    load('demo1.txt', demo1)
+  } );
+
+  loadBtn2.addEventListener('click', function(){    
+    load('demo2.txt', demo2)
+  } );
+
+  function demo1(xhr){
+    document.getElementById('demo1').innerHTML = xhr.responseText;
+  }
+
+  function demo2(xhr){
+    document.getElementById('demo2').innerHTML = xhr.responseText;
+  }
+
+  </script>
+</body>
+</html>

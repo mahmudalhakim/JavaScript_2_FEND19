@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Synkron vs Asynkron</title>
+</head>
+<body>
+  <h1>Synkron vs Asynkron</h1>
+
+  <script>
+  
+  var array1 = ['A', 'B', 'C'];
+
+  console.log("------ Synkron callback-funktion --------");
+
+  console.log("START");
+  
+  // En synkron callback-funktion
+  array1.forEach(function(element){
+    console.log(element);
+    
+  });
+  
+  console.log("SLUT");
+
+
+  console.log("------ Asynkron callback-funktion --------");
+
+  // En Asynkron callback-funktion
+  console.log("START");
+
+  setTimeout(function(){
+    for (const i of array1) {
+      console.log(i)
+    }
+  } , 5000)
+  console.log("SLUT");
+
+  </script>
+</body>
+</html>

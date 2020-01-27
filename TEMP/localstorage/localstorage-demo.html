@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>localStorage demo</title>
+  </head>
+  <body>
+    <h1>localStorage demo</h1>
+
+    <h2>Visa en lista över alla värden som finns i localStorage</h2>
+    <div id="list"></div>
+
+    <h2>
+      Visa en tabell över alla nyckler och värden som finns i localStorage
+    </h2>
+    <div id="table"></div>
+
+    <script>
+
+      // Lagra data i localStorage
+      localStorage.setItem("name", "Mahmud");
+      localStorage.setItem("age", "47");
+      localStorage.setItem("mobile", "076-1234123");
+      localStorage.setItem("email", "Mahmud@alhakim.com");
+
+      let name = localStorage.getItem("name");
+
+      console.log(name);
+
+      for (let i = 0; i < localStorage.length; i++) {
+        console.log("Key: " + localStorage.key(i));
+      }
+
+      // Skapa en lista över alla värden
+      let lista = "<ol>";
+      for (let i = 0; i < localStorage.length; i++) {
+        lista += "<li>" + localStorage.getItem(localStorage.key(i)) + "</li>";
+      }
+      lista += "</ol>";
+      document.getElementById("list").innerHTML = lista;
+
+      // Skapa en tabell över alla nycklar och värden som finns i localStorage
+      let tabell = "<table border=1> <tr> <th>Key</th>  <th>Value</th>  </tr>";
+      for (let i = 0; i < localStorage.length; i++) {
+        tabell += `<tr>
+                        <td> ${localStorage.key(i)} </td>
+                        <td> ${localStorage.getItem(localStorage.key(i))} </td>
+                  </tr>`;
+      }
+      tabell += "</table>";
+      document.getElementById("table").innerHTML = tabell;
+
+      // Ta bort data från localStorage
+      localStorage.removeItem("age");
+
+      // console.log(localStorage);
+      console.table(localStorage);
+
+      // Rensa allt som finns i localStorage
+      localStorage.clear();
+
+      console.table(localStorage);
+
+
+      let myArray = ['A','B','C'];
+
+localStorage.setItem("myArray", JSON.stringify(myArray));
+
+getArray = JSON.parse(localStorage.getItem("myArray"));
+
+
+let myObj = {
+  first:  'A',
+  second: 'B',
+  third:  'C'
+};
+
+localStorage.setItem("myObj", JSON.stringify(myObj));
+
+getObj = JSON.parse(localStorage.getItem("myObj"));
+
+
+
+    </script>
+  </body>
+</html>

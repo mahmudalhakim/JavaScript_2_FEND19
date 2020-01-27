@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Geolocation demo</title>
+  </head>
+  <body>
+    <h1>Geolocation demo</h1>
+    <h2 id="demo"></h2>
+
+
+    <script src="modernize-geolocation.js"></script>
+
+    <script>
+      var x = document.getElementById("demo");
+
+      /*
+        Testa om webbläsaren har stöd för geolocation 
+        med hjälp av objektet navigator
+      */
+
+      console.log(navigator);
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+
+      /*
+        Testa om webbläsaren har stöd för geolocation 
+        med hjälp av modernizr
+      */
+
+      if (Modernizr.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        alert("Your browser does not support geolocation.");
+      }
+
+      function showPosition(position) {
+        console.log(position);
+
+        x.innerHTML =
+          "Latitude: " +
+          position.coords.latitude +
+          "<br>Longitude: " +
+          position.coords.longitude;
+      }
+
+      function showError(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable.";
+            break;
+          case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out.";
+            break;
+          case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred.";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

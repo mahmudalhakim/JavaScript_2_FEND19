@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax XML Demo</title>
+</head>
+<body>
+  <h1>Ajax XML Demo</h1>
+
+  <button id="loadBtn">Hämta data från XML</button>
+
+  <div id="demo"></div>
+
+  <script src="load.js"></script>
+
+  <script>
+  
+  let loadBtn = document.getElementById('loadBtn');
+
+  loadBtn.addEventListener('click', function () {
+    load('cd_catalog.xml' , demo);
+  }) ;
+
+  function demo(xhr){
+
+    let xml = xhr.responseXML;
+    console.log(xml);
+
+    let ARTIST = xml.getElementsByTagName('ARTIST');
+
+    // console.log(ARTIST);
+
+    let list = '<ul>';
+
+    for (let i = 0; i < ARTIST.length; i++) {
+      list += '<li>' + ARTIST[i].textContent  + '</li>';
+    }
+
+    list += '</ul>';
+    
+    document.getElementById('demo').innerHTML = list;
+    
+  }
+  </script>
+
+</body>
+</html>

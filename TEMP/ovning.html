@@ -9,69 +9,56 @@
     <title>TEMP</title>
 </head>
 <body class="container">
-
-    <div id="accordion">
-        <h3>Section 1</h3>
-        <div>
-          <p>
-          Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-          ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-          amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-          odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-          </p>
-        </div>
-        <h3>Section 2</h3>
-        <div>
-          <p>
-          Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-          purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-          velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-          suscipit faucibus urna.
-          </p>
-        </div>
-        <h3>Section 3</h3>
-        <div>
-          <p>
-          Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-          Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-          ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-          lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-          </p>
-          <ul>
-            <li>List item one</li>
-            <li>List item two</li>
-            <li>List item three</li>
-          </ul>
-        </div>
-        <h3>Section 4</h3>
-        <div>
-          <p>
-          Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-          et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-          faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-          mauris vel est.
-          </p>
-          <p>
-          Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-          Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-          inceptos himenaeos.
-          </p>
-        </div>
-      </div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
-
-
-
-<script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-  crossorigin="anonymous"></script>
-
+<button id="loadBtn">Load</button>
+<div id="demo"></div>
 <script>
-$(document).ready( function () {
-    $( "#accordion" ).accordion();
+let xhr = new XMLHttpRequest();
+
+console.log(xhr);
+xhr.open('GET', 'demo.txt', true);
+xhr.send();
+
+xhr.onreadystatechange = function() {
+  console.log(this.readyState);
+  console.log(this);
+  if (this.readyState === 4 && this.status === 200) {
+    document.getElementById('demo').innerHTML =
+    this.responseText;
+  }
+};
+
+
+function load(url, callback) {
+  let xhr = new XMLHttpRequest();
+  
+   xhr.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       callback(this);
+     }
+   };
+
+   xhr.open('GET', url, true);
+   xhr.send();
+}
+
+
+let loadBtn = document.getElementById('loadBtn');
+
+loadBtn.addEventListener('click', function() {
+ let url = 'http://api.namnapi.se/v2/names.json?limit=1';
+ load(url, demo);
 });
+
+function demo(xhr) {
+  let json = JSON.parse(xhr.responseText);
+  let array = json.names;
+  let name = array[0];
+  console.log(name);
+  document.getElementById('demo').innerText = 
+    name.firstname + ' ' + name.surname ;
+}
+
+
 
 </script>
 </body>
