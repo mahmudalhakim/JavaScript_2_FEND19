@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax NamnAPI</title>
+</head>
+<body>
+  <h1>Ajax NamnAPI</h1>
+  <h2><a href="https://www.namnapi.se/">https://www.namnapi.se/</a></h2>
+
+  <button id="loadBtn">Hämta ett slumpmässigt namn</button>
+  <hr>
+  <h1 id="demo"></h1>
+
+  <script src="load.js"></script>
+  <script>
+  
+  const loadBtn = document.getElementById('loadBtn');
+  loadBtn.addEventListener('click', function() {
+    let url = "https://api.namnapi.se/v2/names.json?limit=1"
+    load(url , demo)
+  });
+
+  function demo(xhr){
+    console.log(xhr.responseText);
+
+    let namn = JSON.parse(xhr.responseText);
+    console.log(namn);
+    console.log(namn.names);
+    console.log(namn.names[0]);
+    console.log(namn.names[0].firstname);
+    console.log(namn.names[0].surname);
+
+    let data = namn.names[0].firstname + ' ' + namn.names[0].surname;
+    
+    document.getElementById('demo').innerHTML = data;
+
+
+    
+  }
+
+    
+  </script>
+
+</body>
+</html>

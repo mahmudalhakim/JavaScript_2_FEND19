@@ -10,15 +10,16 @@
   <h1>Ajax XML Demo</h1>
 
   <button id="loadBtn">Hämta data från XML</button>
-
-  <div id="demo"></div>
+  <div id="demo">
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem eaque in adipisci, odio hic optio inventore pariatur iste quod eum labore consequuntur veniam! Dicta tempora quos magnam ipsum vel incidunt.
+    </p>
+  </div>
 
   <script src="load.js"></script>
-
   <script>
   
   let loadBtn = document.getElementById('loadBtn');
-
   loadBtn.addEventListener('click', function () {
     load('cd_catalog.xml' , demo);
   }) ;
@@ -29,19 +30,29 @@
     console.log(xml);
 
     let ARTIST = xml.getElementsByTagName('ARTIST');
+    // ARTIST är en HTMLCollection
+    console.log(ARTIST);
 
-    // console.log(ARTIST);
+    // Eller 
+    ARTIST = xml.querySelectorAll('ARTIST');
+    // ARTIST är en NodeList
+    console.log(ARTIST);
 
     let list = '<ul>';
-
     for (let i = 0; i < ARTIST.length; i++) {
       list += '<li>' + ARTIST[i].textContent  + '</li>';
     }
 
+    /*
+    ARTIST.forEach(element => {
+      list += '<li> TEST ' + element.textContent  + '</li>';
+    });
+    */
+
     list += '</ul>';
     
-    document.getElementById('demo').innerHTML = list;
-    
+    // Lägg till listan till diven som har id=demo
+    document.getElementById('demo').innerHTML += list;
   }
   </script>
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax JSON demo</title>
+</head>
+<body>
+  <h1>Ajax JSON demo</h1>
+  <button id="loadBtn">Läs in data från JSON</button>
+  <hr>
+  <div id="demo"></div>
+
+  <script src="load.js"></script>
+  <script>
+  
+  let loadBtn = document.getElementById('loadBtn');
+  loadBtn.addEventListener('click', function() {
+    load('demo.json', demo);
+  });
+
+  function demo(xhr){
+
+    console.log(xhr.responseText);
+    // OBS! Vi får tillbaks en sträng
+
+    // Vi måste konvertera strängen till JSON-objekt
+    let user = JSON.parse(xhr.responseText);
+
+    console.log(user);
+    console.log(user.name);
+
+    let data =  'ID: ' + user.id 
+                + '<br>Name: ' + user.name
+                + '<br>Company: ' + user.company.name ;
+
+    let demo = document.getElementById('demo');
+    demo.innerHTML = data;
+    demo.innerHTML += '<hr>' + JSON.stringify(user);    
+
+  }
+
+  </script>
+</body>
+</html>
