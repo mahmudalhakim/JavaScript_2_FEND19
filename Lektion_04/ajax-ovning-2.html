@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Övning 2</title>
+</head>
+<body>
+  <h1>Övning 2</h1>
+  <button id="loadBtn">Visa 10 slumpmässiga namn</button>
+  <hr>
+  <select id="loadSelect">
+    <option value="0">---Välj antal---</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <hr>
+  <div id="demo"></div>
+
+  <script src="load.js"></script>
+  <script>
+  
+  let loadBtn = document.getElementById('loadBtn');
+  loadBtn.addEventListener('click', function() {
+    load('https://api.namnapi.se/v2/names.json?limit=10', demo);
+  });
+
+  function demo(xhr) {
+    let namn = JSON.parse(xhr.responseText).names;
+    console.log(namn);
+
+    let list = '<ul>';
+    namn.forEach(el => {
+      list += '<li>' + el.firstname + ' ' + el.surname + '</li>';
+    });
+    list += '</ul>';
+
+    document.getElementById('demo').innerHTML = list;
+  }
+
+
+  let loadSelect = document.getElementById('loadSelect');
+  loadSelect.addEventListener('change', function() {
+    let count = loadSelect.value;
+    let url = 'https://api.namnapi.se/v2/names.json?limit='+count
+    load(url, demo);
+  });
+
+  </script>
+</body>
+</html>
