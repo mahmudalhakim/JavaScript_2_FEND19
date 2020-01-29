@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Random User API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      .card{
+        width:100%;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <h1 class="text-center">Random User API</h1>
+    <div class="card" style="width: 18rem;">
+      <img src="" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
+        <a href="#" class="contact btn btn-primary">Contact Me</a>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function () {
+
+      let endpoint = 'https://randomuser.me/api/';
+      $.getJSON(endpoint, function(data){
+        console.log(data);
+        console.log(data.results);
+        console.log(data.results[0]);
+
+        let user = data.results[0];
+
+        let image = user.picture.large;
+        console.log(image);
+        
+        let name = user.name.first + ' ' + user.name.last;
+        console.log(name);
+
+        let age = user.dob.age;
+        console.log(age);
+
+        let city = user.location.city;
+        console.log(city);
+        
+        let email = user.email;
+        console.log(email);
+        
+        $('.card-img-top').attr('src', image);
+        $('.card-title').html(name);
+        $('.card-text').html('Age: '+ age + '<br>City: ' + city);
+        $('.contact').attr('href', 'mailto:'+email);
+       
+      })
+
+    });
+    </script>
+  </body>
+</html>
