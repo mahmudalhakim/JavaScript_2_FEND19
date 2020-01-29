@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ajax via jQuery</title>
+  </head>
+  <body>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <ul id="breeds"></ul>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#demo1").load("demo.txt", function(res, status, xhr) {
+          console.log(res);
+          console.log(status);
+          console.log(xhr);
+        });
+
+        $.getJSON("demo.json", function(res) {
+          console.log(res);
+
+          // $('#demo2').html(JSON.stringify(res));
+          $("#demo2").html(res.name);
+        });
+
+        $.getJSON("https://dog.ceo/api/breeds/list/all", function(data) {
+          console.log(data);
+          console.log(data.message);
+          
+          $.each(data.message, function(index, array) {
+            console.log(index);
+            console.log(array);
+            $("#breeds").append("<li>" + index + "</li>");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
