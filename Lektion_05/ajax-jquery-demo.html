@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax via jQuery</title>
+</head>
+<body>
+  
+  <h1>Ajax via jQuery</h1>
+
+  <h2>Ladda text från en fil</h2>
+  <p id="demo1"></p>
+  <p id="demo2"></p>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+  
+  $(document).ready(function() {
+
+    $('#demo1').load('demo1.txt' , function(response, status, xhr){
+      console.log(response);
+      console.log(status);
+      console.log(xhr);
+    });
+
+    $.getJSON('demo2.json', function(response){
+
+      console.log(response);
+
+      let output = `
+        <ul>
+          <li>ID:    ${response.id}    </li>
+          <li>Name:  ${response.name}  </li>
+          <li>Email: ${response.email} </li> 
+          <li>Phone: ${response.phone} </li>
+        </ul>
+      `;
+
+      $('#demo2').html(output);
+
+    });
+
+  });
+
+  </script>
+
+</body>
+</html>

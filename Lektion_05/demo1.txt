@@ -1,0 +1,2 @@
+Filen demo1.txt.
+Lorem ipsum dolor sit amet.

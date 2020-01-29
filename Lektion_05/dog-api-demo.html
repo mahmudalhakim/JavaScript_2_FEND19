@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dog API Demo</title>
+</head>
+<body>
+  <h1>Dog API Demo</h1>
+  <ol id="breeds"></ol>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+  
+  $(document).ready(function() {
+
+    let endpoint = 'https://dog.ceo/api/breeds/list/all';
+
+    $.getJSON(endpoint, function(dogs){
+
+      // console.log(dogs);
+      // console.log(dogs.message);
+
+      $.each(dogs.message , function(breed,subBreed){
+        
+        // console.log(breed);
+
+        $('#breeds').append('<li>'+breed+'</li>');
+        
+      });
+      
+    });
+
+  });
+  
+  </script>
+</body>
+</html>
