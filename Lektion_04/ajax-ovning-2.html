@@ -8,10 +8,11 @@
 </head>
 <body>
   <h1>Övning 2</h1>
-  <button id="loadBtn">Visa 10 slumpmässiga namn</button>
+
+  <button id="loadList">Läs in 10 namn från namnapi.se</button>
   <hr>
-  <select id="loadSelect">
-    <option value="0">---Välj antal---</option>
+  <select id="select">
+    <option value="0">---Välj antal</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -19,36 +20,63 @@
     <option value="5">5</option>
   </select>
   <hr>
-  <div id="demo"></div>
+  <div id="list"></div>
 
   <script src="load.js"></script>
   <script>
   
-  let loadBtn = document.getElementById('loadBtn');
-  loadBtn.addEventListener('click', function() {
-    load('https://api.namnapi.se/v2/names.json?limit=10', demo);
+  let loadList = document.getElementById('loadList');
+  let list = document.getElementById('list');
+  let select = document.getElementById('select');
+  // console.log(select);
+    
+
+  loadList.addEventListener('click', function() {
+    const url = "https://api.namnapi.se/v2/names.json?limit=10";
+    load(url, showList);
+  });
+  
+  
+  select.addEventListener('change', function(e){
+    // hämta från en dropdown-lista
+
+    console.log(e);
+    
+    let antal = select.value;
+    antal = e.target.value;
+    
+    const url = "https://api.namnapi.se/v2/names.json?limit="+antal;
+    load(url, showList);
   });
 
-  function demo(xhr) {
-    let namn = JSON.parse(xhr.responseText).names;
-    console.log(namn);
-
-    let list = '<ul>';
-    namn.forEach(el => {
-      list += '<li>' + el.firstname + ' ' + el.surname + '</li>';
-    });
-    list += '</ul>';
-
-    document.getElementById('demo').innerHTML = list;
-  }
 
 
-  let loadSelect = document.getElementById('loadSelect');
-  loadSelect.addEventListener('change', function() {
-    let count = loadSelect.value;
-    let url = 'https://api.namnapi.se/v2/names.json?limit='+count
-    load(url, demo);
-  });
+
+    function showList(xhr){
+      // console.log(xhr);
+      // console.log(xhr.response);
+      // console.log(xhr.responseText);
+      // console.log(JSON.parse(xhr.responseText));
+      // console.log((JSON.parse(xhr.responseText)).names);
+
+      const response = xhr.responseText;
+      const json = JSON.parse(response);
+      const names = json.names;
+
+      //console.log(names);
+
+      let output = '<ol>';
+      names.forEach(name => {
+        console.log(name.firstname);
+        console.log(name.surname);
+        output += '<li>' + name.firstname + ' ' + name.surname + '</li>';
+        
+      });
+      output += '</ol>';
+
+      // console.log(output);
+      list.innerHTML = output; 
+    }
 
   </script>
 </body>
