@@ -1,41 +1,39 @@
-
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dog API</title>
     <style>
-      .container {
-        text-align: center;
-        font-family: sans-serif;
-      }
-      img {
-        width: auto;
-        height: 70vh;
-        border: 1px solid black;
-        border-radius: 10px;
-      }
+    .container{
+      text-align: center;
+      font-family: sans-serif;
+    }
+    img{
+      width: auto;
+      height: 70vh;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
     </style>
   </head>
   <body class="container">
     <h1>Random image from Dog API</h1>
     <img src="" alt="" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
     $(document).ready(function () {
 
-      let url = 'https://dog.ceo/api/breeds/image/random';
-
-      $.getJSON(url , function(data){
-        console.log(data.message); // innehåller sökväg (src) till en bild
-        $('img').attr('src', data.message);
-      });
+      let endpoint = 'https://dog.ceo/api/breeds/image/random';
+      $.getJSON(endpoint, function(image){
+        console.log(image);
+        console.log(image.message); // Sökväg (src) till en bild
+        $('img').attr('src', image.message);
+      })
 
     });
-
     </script>
   </body>
 </html>

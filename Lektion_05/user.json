@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": { "title": "Ms", "first": "Carol", "last": "Brinks" },
+      "location": {
+        "street": { "number": 1889, "name": "De Schaape Wei" },
+        "city": "Driehuis Nh",
+        "state": "Friesland",
+        "country": "Netherlands",
+        "postcode": 72279,
+        "coordinates": { "latitude": "43.9909", "longitude": "68.0581" },
+        "timezone": {
+          "offset": "+5:00",
+          "description": "Ekaterinburg, Islamabad, Karachi, Tashkent"
+        }
+      },
+      "email": "carol.brinks@example.com",
+      "login": {
+        "uuid": "21ca3633-be13-43cf-9027-779d44b9d1ab",
+        "username": "lazyladybug541",
+        "password": "brutus",
+        "salt": "3dooW9ua",
+        "md5": "36b8ee69686463d74d4f704715a27389",
+        "sha1": "7fe73267d384f66a260a50944c91bff6a8af16db",
+        "sha256": "15dfc49fec3e84d828816b8a37da0799bcfc54a69047e6324f51e53406990a24"
+      },
+      "dob": { "date": "1977-02-03T16:17:15.555Z", "age": 43 },
+      "registered": { "date": "2017-04-30T16:02:47.807Z", "age": 3 },
+      "phone": "(276)-816-7558",
+      "cell": "(949)-518-2355",
+      "id": { "name": "BSN", "value": "06191492" },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/26.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/26.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/26.jpg"
+      },
+      "nat": "NL"
+    }
+  ],
+  "info": {
+    "seed": "7cea39d12a27d740",
+    "results": 1,
+    "page": 1,
+    "version": "1.3"
+  }
+}
