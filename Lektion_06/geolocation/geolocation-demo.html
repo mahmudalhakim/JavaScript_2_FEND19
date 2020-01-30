@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Geolocation demo</title>
+  </head>
+  <body>
+
+    <h1>Geolocation demo</h1>
+    <p id="geo"></p>
+
+
+    <script src="geolocation.js"></script>
+    <script>
+      if (Modernizr.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not-supported");
+      }
+
+      function showPosition(position){
+        console.log(position);
+        console.log(position.coords);
+        console.log(position.coords.longitude);
+        console.log(position.coords.latitude);
+
+        document.getElementById('geo').innerHTML = 
+        "Latitude: " + position.coords.latitude + '<br>'+
+        "Longitude: " + position.coords.longitude + '<br>' ;
+
+      }
+    </script>
+  </body>
+</html>

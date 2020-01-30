@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Local Storage Demo</title>
+</head>
+<body>
+  <h1>Local Storage Demo</h1>
+
+  <div id="items"></div>
+
+  <script>
+  
+  // Arbera med localStorage
+  
+  // Rensa localStorage
+  localStorage.clear();
+  
+  // Lagra data i localStorage
+  localStorage.setItem("name", "Mahmud Al Hakim");  
+  localStorage.setItem("email", "Mahmud@Hakim.com");
+
+  
+  // Hämta data från localStorage
+  let name = localStorage.getItem("name");
+  let email = localStorage.getItem("email");
+  
+  let output = '<ol>';
+  for (let i = 0; i < localStorage.length; i++) {
+    output += '<li>' + 
+      localStorage.key(i) + ' : ' +  
+      localStorage.getItem(localStorage.key(i)) +
+      '</li>';
+  }
+  output += '</ol>';
+  document.getElementById('items').innerHTML = output;
+      
+
+  // Ta bort data från localStorage
+  localStorage.removeItem('name');
+  // localStorage.removeItem('email');
+
+  // Lagra en array i localStorage
+  let myArray = ['A', 'B', 'C'];
+
+  localStorage.setItem('arrayDemo' , myArray); 
+  // OBS! Vi lagrar en sträng (inte så användbart)
+  console.table(localStorage.getItem('arrayDemo'));  // A,B,C
+  
+  // Ett bättre sätt
+  localStorage.setItem('arrayDemo', JSON.stringify(myArray));
+  console.table(localStorage.getItem('arrayDemo'));  // ["A","B","C"]
+
+  let myNewArray = JSON.parse(localStorage.getItem('arrayDemo'));
+  console.log(myNewArray);
+  /*
+  (3) ["A", "B", "C"]
+      0: "A"
+      1: "B"
+      2: "C"
+      length: 3
+      __proto__: Array(0)
+  */
+
+  console.table(localStorage);
+
+  </script>
+
+</body>
+</html>
