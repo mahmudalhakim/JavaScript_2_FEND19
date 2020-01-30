@@ -19,49 +19,61 @@
 
     <script>
     
+    // Hämta element
     const form = document.querySelector('form');
     const input = document.querySelector('#lang');
     const list = document.querySelector('#list');
-
+    
+    // Koppla event
     form.addEventListener('submit', save);
 
-    get();
-
     function save(e){
-        e.preventDefault();
+      e.preventDefault();
+      
+      // Hämta value från input-fältet
+      let lang = input.value;
+      console.log(lang);
 
-        let lang = input.value;
+      input.value = "";
 
-        let languages;
+      // Skapa en variabel för att lagra data
+      let languages;
 
-        if(localStorage.getItem('languages') == null) {
-            languages = [];
-        } else {
-            languages = JSON.parse(localStorage.getItem('languages'));
-        }
+      // Första gången => Array saknas!
+      if(localStorage.getItem('languages') == null){
+        // Skapa en tom array
+        languages = [];  // eller array()
+      }else{
+        // Det finns en array => Hämta arrayen
+        languages = JSON.parse(localStorage.getItem("languages"));
+      }
 
-        languages.push(lang);
+      // Spara i arrayen
+      languages.push(lang);
 
-        localStorage.setItem('languages', JSON.stringify(languages));
+      // Skicka arrayen till localStorage
+      //  localStorage.setItem("languages", languages);  // Farligt
+      localStorage.setItem("languages", JSON.stringify(languages));
 
-        input.value = '';
-
-        get();
-
+      get();
     }
 
     function get(){
-        if(localStorage.getItem('languages') === null) 
-            return;
-            
-        const languages = JSON.parse(localStorage.getItem('languages'));
-        
-        output = "<ul>";
-        languages.forEach(lang => output += "<li>"+lang+"</li>");
-        output += "</ul>";
 
+      let languages = JSON.parse(localStorage.getItem("languages"));
+
+      if(languages != null){
+        let output = '<ul>';
+        languages.forEach(lang => {
+          output += '<li>'+lang+'</li>';
+        });
+        output += '</ul>';
+        
         list.innerHTML = output;
-    }
+      }
+    } 
+
+    get();
       
     </script>
 </body>

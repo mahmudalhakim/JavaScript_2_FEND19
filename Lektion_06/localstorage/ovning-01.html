@@ -18,38 +18,43 @@
     <h2 id="welcome"></h2>
 
     <script>
+
     
+    // Hämta nödvändiga element
     const form = document.querySelector('form');
     const input = document.querySelector('#name');
-    const welcome = document.querySelector('#welcome');
+    const welcome  = document.querySelector('#welcome');
 
+    // Koppla events
     form.addEventListener('submit', save);
 
-    get();
+    function save(event){
+        event.preventDefault();
 
-    function save(e){
-        e.preventDefault();
-
+        // console.log(event);
         let name = input.value;
-
-        // Spara data i localStorage
+        // https://stackoverflow.com/questions/11563638/how-do-i-get-the-value-of-text-input-field-using-javascript
+        console.log(name);
+        
+        // Lagra data i localStorage
         localStorage.setItem('name', name);
-
-        input.value = '';
 
         get();
 
     }
 
     function get(){
-        // Hämta data från localStorage
-        let name = localStorage.getItem("name");
-
-        if(name != null){
-            welcome.innerHTML = "Välkommen " + name;
-        }
-    }
         
+        // Hämta data från localStorage
+        let name = localStorage.getItem('name');
+
+        // Visa data på sidan
+        if(name != null)
+            welcome.innerHTML = "Welcome " + name;
+    }
+
+    get();
+
     </script>
 </body>
 </html>
