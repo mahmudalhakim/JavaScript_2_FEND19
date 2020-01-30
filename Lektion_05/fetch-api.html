@@ -5,26 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fetch API</title>
+    <style>
+    .address{
+      border:1px solid black;
+      padding: 5px;
+      margin: 5px;
+      width: 300px;
+      display: inline-block;
+    }
+    </style>
   </head>
   <body>
     <h1>Fetch API</h1>
     <div id="usersDiv"></div>
+    <hr>
+    <div id="table"></div>
+    <hr>
+    <div id="address"></div>
 
     <script>
-      let usersDiv = document.getElementById("usersDiv");
-
+      
       // jsonplaceholder demo
       fetch("https://jsonplaceholder.typicode.com/users")
-        .then(response => response.json())
-        .then(json => showUsers(json));
-
+      .then( response => response.json())
+      .then(data => showUsers(data))
+      .catch(err => console.log(err))
+      
       function showUsers(users) {
-        console.log(users);
-
-        users.forEach(user => {
+        console.log(users); 
+        // en array som innehåller 10 json-objekt
+        
+        for (let i = 0; i < users.length; i++) {
+          const user = users[i];
+          console.log(user); // ett json-objekt
           console.log(user.name);
-          usersDiv.innerHTML += user.name + "<br>";
+        }
+        
+        // Övning 1
+        let output = '<ol>';
+        users.forEach( user => {
+          console.log(user); // ett json-objekt
+          console.log(user.name);
+          console.log(user.email);
+          console.log(user.address);
+          console.log(user.address.city);
+          
+          output += '<li>' + user.name + "</li>";
         });
+        output += '</ol>'
+
+        document.getElementById("usersDiv").innerHTML = output;
+      
+      // Övning 2
+        output = '<table>';
+        output += '<tr><th>Name</th><th>Email</th></tr>'
+        users.forEach( user => {          
+          output += `
+            <tr>
+              <td>${user.name}</td>
+              <td>${user.email}</td>
+              </tr>
+          `;
+        });
+        output += '</table>'
+        document.getElementById('table').innerHTML = output;
+
+        // Övning 3
+        output ='';
+        users.forEach( user => {          
+          output += '<div class="address">';
+          output += `
+           <h3>${user.name}</h3>
+           <p>
+            ${user.address.street} <br>
+            ${user.address.zipcode} <br>
+            ${user.address.city} <br>
+            </p>
+          `;
+          output += '</div>'
+        });
+        document.getElementById('address').innerHTML = output;
+      
       }
     </script>
   </body>
