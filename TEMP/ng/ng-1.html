@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body ng-app>
+    <form action="">
+      <input
+        type="text"
+        ng-model="yourFName"
+        placeholder="Enter a firstname here"
+      />
+
+      <input
+        type="text"
+        ng-model="yourLName"
+        placeholder="Enter a lastname here"
+      />
+    </form>
+
+    <h1>Hello {{ yourFName }} {{ yourLName }}</h1>
+
+    <div ng-include="'nav.html'"></div>
+
+    <div ng-init="moms=0.25">
+      <p>Pris exkl. moms: 100kr</p>
+      <p>Pris inkl. moms: {{ 100 * (1 + moms) }}kr</p>
+    </div>
+
+    <div ng-init="person={firstName:'John', lastName:'Doe'}">
+      <h1>{{person.firstName}} {{person.lastName}}</h1>
+    </div>
+
+    <div ng-init="qty=1 ; cost=10">
+      Antal: <br />
+      <input type="number" min="0" ng-model="qty" /> <br />
+
+      Pris: <br />
+      <input type="number" min="0" ng-model="cost" /> <br />
+      Totalt: {{ qty * cost }}
+    </div>
+
+    <div ng-init="qty=1 ; cost=10">
+      Antal: <br />
+      <input type="number" min="0" ng-model="qty" /> <br />
+
+      Pris: <br />
+      <input type="number" min="0" ng-model="cost" /> <br />
+      Totalt: {{ qty * cost }}
+    </div>
+
+    <h2>Övning</h2>
+    <table>
+      <tr>
+        <th>Produkt</th>
+        <th>Pris</th>
+        <th>Antal</th>
+        <th>Summa</th>
+      </tr>
+      <tr>
+        <td>Produkt 1</td>
+        <td ng-init="cost1=10">10kr</td>
+        <td>
+          <input type="number" min="0" ng-init="qty1=0" ng-model="qty1" />
+        </td>
+        <td>{{ qty1 * cost1 }}</td>
+      </tr>
+      <tr>
+        <td>Produkt 2</td>
+        <td ng-init="cost2=15">15kr</td>
+        <td>
+          <input type="number" min="0" ng-init="qty2=0" ng-model="qty2" />
+        </td>
+        <td>{{ qty2 * cost2 }}</td>
+      </tr>
+    </table>
+
+    <h3>Totalsumma: {{ (qty1 * cost1) + (qty2 * cost2) }}</h3>
+
+    <h2>NG-Repeat</h2>
+    <div ng-init="months=['Jan','Feb','Mar']">
+      <div ng-repeat="month in months">
+        {{ month }}
+      </div>
+    </div>
+
+    <ul ng-init="days=['Måndag', 'Tisdag' , 'Onsdag', 'Torsdag' , 'Fredag']">
+      <li ng-repeat="day in days">
+        {{ day }}
+      </li>
+    </ul>
+
+    <h2>ng-click</h2>
+
+    <button ng-init="count=0" ng-click="count = count + 1">
+      Klicka här för att testa ng-click!
+    </button>
+
+    <h2>{{ count }}</h2>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  </body>
+</html>

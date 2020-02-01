@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body ng-app="myApp">
+    <h1 ng-controller="myCtrl as c">
+      {{ c.firstName + " " + c.lastName }}
+    </h1>
+
+    <h1 ng-controller="myCtrl2">
+      {{ firstName + " " + lastName }}
+    </h1>
+
+    <div ng-controller="personCtrl">
+      First Name: <input type="text" ng-model="firstName"><br>
+      Last Name:  <input type="text" ng-model="lastName"> <br>
+      Full Name: {{ fullName() }}
+    </div>
+      
+    <h2>Övning</h2>
+    <div ng-controller="carCtrl">
+      <table>
+        <tr>
+          <th>RegNr</th>
+          <th>Modell</th>
+        </tr>
+        <tr ng-repeat="car in cars">
+          <td>{{ car.Regnr }}</td>
+          <td>{{ car.Modell }}</td>
+        </tr>
+      </table>
+    </div>
+      
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="ng-2.js"></script>
+  </body>
+</html>
