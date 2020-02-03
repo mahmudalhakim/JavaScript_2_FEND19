@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AngularJS - Exempel 9</title>
+</head>
+
+<body>
+
+  <h1>AngularJS - Exempel 9</h1>
+
+  <h2>AngularJS Controller</h2>
+
+  <div ng-app="myApp">
+    <h2 ng-controller="myCtrl">
+      {{ firstName + ' ' + lastName }}
+    </h2> 
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+  // Skapa en Angular-modul
+  let myApp = angular.module("myApp" , []);
+
+  // Skapa en controller
+  myApp.controller("myCtrl", function ($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+  });
+  </script>
+</body>
+</html>
