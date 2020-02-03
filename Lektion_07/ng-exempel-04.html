@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AngularJS - Exempel 4</title>
+</head>
+
+<body ng-app>
+
+  <h1>AngularJS - Exempel 4</h1>
+
+  <h2>ng-init - demo 1 </h2>
+  <!-- 
+    Med hjälp av direktivet ng-init 
+    kan vi skapa och initiera variabler eller objekt
+  -->
+  <div ng-init="moms=0.25">
+    <p>Pris exkl. moms : 100 kr</p>
+    <p>Pris inkl. moms : {{ 100 * (1 + moms) }} kr</p>
+  </div>
+
+  <h2>ng-init - demo 2</h2>
+  <div ng-init="person={firstname: 'John' , lastname: 'Doe'}">
+    <p>
+      {{ person.firstname  }} {{ person.lastname}}
+    </p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+
+</body>
+</html>

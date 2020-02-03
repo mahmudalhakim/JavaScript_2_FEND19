@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      function User(name, dob) {
+        this.name = name;
+        this.dob = dob;
+
+        this.sayHi = function() {
+          return (
+            "Hello " + this.name + ". You are " + this.calcAge() + " years old!"
+          );
+        };
+
+        this.calcAge = function() {
+          let date = new Date(this.dob);
+          let thisYear = new Date().getFullYear();
+          return thisYear - date.getFullYear();
+        };
+
+        this.toString = function () {
+          return this.name;
+        };
+
+      }
+
+      let user = new User("Mahmud", "1973 02 02");
+      
+      console.log(user.name);
+      console.log(user.dob);
+      console.log(user.calcAge());
+      console.log(user.sayHi()); 
+      console.log(user);
+      
+      console.log(user.hasOwnProperty("name"));
+      console.log(user.isPrototypeOf(Object));
+      console.log(user.toString());
+      console.log(user);
+      console.log(user.valueOf());
+
+
+    </script>
+  </body>
+</html>
