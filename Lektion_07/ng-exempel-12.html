@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AngularJS - Exempel 12</title>
+</head>
+
+<body ng-app="myApp">
+
+  <h2>AngularJS - Exempel 12</h1>
+
+  
+  <div ng-controller="carCtrl">
+    
+    <table border=1>
+      <tr>
+        <th>Modell</th>
+        <th>Reg. Nummer</th>
+        <th>Pris</th>
+      </tr>
+
+      <tr ng-repeat="car in cars">
+        <td>
+          {{ car.Model }}
+        </td>
+        <td>
+          {{ car.Regnr }}
+        </td>
+        <td>
+          {{ car.Price }}
+        </td>
+      </tr>
+    </table>
+    
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="myApp.js"></script>
+</body>
+</html>
