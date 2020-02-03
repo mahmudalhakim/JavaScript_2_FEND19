@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AngularJS - Exempel 13</title>
+</head>
+
+<body ng-app="myApp">
+
+  <h2>AngularJS - Exempel 13</h1>
+  <h3>Filtrera en lista</h3>
+
+  <div ng-controller="listCtrl">
+    
+    <input type="text" ng-model="hideNames">
+
+    <hr>
+
+    <ul >
+      <li ng-repeat="name in names | filter : hideNames ">
+        {{ name }}
+      </li>
+    </ul>
+    
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="myApp.js"></script>
+
+</body>
+</html>

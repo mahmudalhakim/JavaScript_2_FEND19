@@ -51,9 +51,15 @@ myApp.controller("carCtrl", function($scope){
     },
   ];
 }); 
-  
 
 
+// En controller som hanterar en lista
+myApp.controller("listCtrl", function($scope){
 
+  $scope.names = [
+    "Mahmud", "Yasmin", "Mehdi", "Hoda", "Mariam", "Dania", "Yasir"
+  ]
+
+}); 
 
 
