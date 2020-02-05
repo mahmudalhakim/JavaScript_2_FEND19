@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>myLib - Demo</title>
+</head>
+<body>
+  <h1>myLib - Demo</h1>
+  <button id="btn">Generera ett nummer mellan 1 och 6</button> 
+  
+  <h2 id="random"></h2>
+
+<script src="myLib.js"></script>
+<script>
+
+document.getElementById('btn').addEventListener('click' , function(){ 
+  document.getElementById('random').innerHTML = myLib.random(1, 6)
+});
+
+</script>
+</body>
+</html>

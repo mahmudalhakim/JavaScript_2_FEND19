@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Closure</title>
+  </head>
+  <body>
+    <h1>Closure - Demo</h1>
+
+    <script>
+
+/*
+
+• När du returnerar en funktion inuti en yttre funktion 
+  skapas automatiskt en closure.
+• Den inre funktionen har tillgång till den yttre funktionens 
+  variabler även fast den yttre funktionen har körts klart.
+*/
+
+      function outer() {
+        var a = 1;
+        return function(b) {
+          a = a + b;
+          console.log(a);
+        };
+      }
+
+      var inner = outer();
+      inner(1);
+      inner(2);
+
+    </script>
+  </body>
+</html>
