@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hoisting</title>
+  </head>
+  <body>
+    <h1>Hoisting - Demo</h1>
+    <script>
+      var a = 1; // OBS var
+      console.log(a);
+      demo();
+      function demo() {
+        console.log(a);  // undefined
+        var a = 2; // OBS var
+        console.log(a);
+      }
+    </script>
+  </body>
+</html>

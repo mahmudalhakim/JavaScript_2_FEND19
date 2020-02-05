@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>This - Demo</title>
+  </head>
+  <body>
+    <h1>This - Demo</h1>
+    <script>
+      // Ett objekt som heter course
+      let course = {
+        // title är en egenskap/property
+        title: "JavaScript",
+
+        // info är en metod
+        info: function() {
+          // this pekar på det aktuella objektet
+          // this refererar till objektet course
+          console.log(this);
+          console.log(this.title);
+
+          // Lösning 1 på this som är inne i en funktion,
+          // som inte tillhör objektet.
+          // Skapa en variabel som pekar på det aktuella objektet
+          let self = this;
+
+          // En funktion inne i en metod
+          function demo() {
+            // OBS! Problem!!!
+            // this inne i en funktion som inte tillhör
+            // objektet pekar med det globala objektet window.
+            console.log(this); // window
+            console.log(this.title); // undefined
+
+            console.log(self);
+            console.log(self.title);
+          }
+          demo();
+
+          // Lösning 2
+          // Använd arrow-functions
+          // Arrow-functions har inte en egen this
+          demo2 = () => console.log(this);
+
+          demo2();
+        } // Här slutar metoden info()
+      }; // Här slutar objektet
+
+      // Anrop av metoden info som i objektet course
+      course.info();
+
+      
+      // Övning om this
+      let course2 = {
+        title: "JavaScript",
+        students: ["Adam", "Bertil", "Cesar"],
+        info: function() {
+          console.log(this);
+          console.log(this.title);
+          console.log(this.students);
+          
+          // Problem
+          // Adam läser undefined ...
+          this.students.forEach(function(s) {
+            console.log(s + " läser " + this.title);
+            // this pekar här på window
+          });
+
+          // Lösning
+          this.students.forEach( s => 
+            console.log(s + " läser " + this.title)
+            // this pekar här på det aktuella objektet (course2)
+          );
+        }
+      };
+      course2.info();
+
+
+    </script>
+  </body>
+</html>

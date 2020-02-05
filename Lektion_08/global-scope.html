@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Global Scope</title>
+  </head>
+  <body>
+  
+  <h1>Global Scope - Demo</h1>
+  
+  <script>
+
+      var mahmud = "Mahmud Al Hakim";
+
+      function demo() {
+        console.log(mahmud);
+        console.log(window.mahmud);
+        console.log(this.mahmud);
+
+        function demo2(){
+          console.log(mahmud);
+          console.log(window.mahmud);
+          console.log(this.mahmud);
+        }
+        demo2();
+      }
+      
+      demo();
+
+    </script>
+  </body>
+</html>
