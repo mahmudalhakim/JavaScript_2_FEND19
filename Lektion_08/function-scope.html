@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Function Scope</title>
+  </head>
+  <body>
+    <h1>Function Scope - Demo</h1>
+
+    <script>
+
+
+      function demo() {
+
+        // Lokal variabel = finns enbart inne i funktionen
+        var mahmud = "Mahmud Al Hakim";
+        console.log(mahmud);
+
+        // En liten bugg i JavaScript
+        // OBS! varken var eller let
+        alhakim = "Al Hakim"; 
+        // alhakim blir en egenskap som läggs till window
+        // alhakim blir en global variabel
+        console.log(alhakim); 
+
+        
+      } // här försvinner alla lokala variabler
+
+      demo();
+
+      // console.log(mahmud);
+      // Uncaught ReferenceError: mahmud is not defined
+
+      console.log(alhakim);
+      
+
+
+    </script>
+  </body>
+</html>

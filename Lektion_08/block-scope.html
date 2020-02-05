@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Block Scope</title>
+  </head>
+  <body>
+    <h1>Block Scope - Demo</h1>
+
+    <script>
+
+    // Skapa ett block med klamrar (måsvingar)
+    {
+      var test1 = 1;
+      let test2 = 2;
+      test3 = 3;  // här skapas en global variabel
+                  // vi får en egenskap som kopplas till window
+      console.log(test1);
+      console.log(test2);
+      console.log(test3);
+    } // Här slutar blocket
+
+    console.log(test1); // OBS! En global variabel
+    console.log(test3); // OBS! En global variabel
+    console.log(test2);
+    // Uncaught ReferenceError: test2 is not defined
+
+
+    // Mer om block scope
+    for (let i = 0; i < 10 ; i++) {
+      console.log(i);
+    }
+
+    console.log(i); // error
+    // let har block scope men inte var
+  
+
+    </script>
+  </body>
+</html>
