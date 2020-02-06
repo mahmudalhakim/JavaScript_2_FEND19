@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Arbeta med konstruktorer</title>
+</head>
+<body>
+  
+  <h1>Arbeta med konstruktorer</h1>
+
+  <script>
+    
+  // Skapa en konstruktor som beskriver en användare (User)
+  function User(name, birthday){
+
+    // OBS! name och birthday är en privata egenskap
+    // Detta kallas "Inkapsling"
+
+    // Publika egenskaper
+    this.username = '';
+
+    // Publika metoder
+    this.sayHi = function (){
+      return `Hello ${name}. You are ${calcAge()} years old.`;
+    
+
+      // Metoden sayHi returnerar data från 
+      // konstruktorns privata egenskaper
+      // this pekar på det aktuella objektet
+    }
+
+    // Privata metoder
+    function calcAge(){
+
+      let birthDate = new Date();
+      let thisYear = birthDate.getFullYear();
+      let userYear = new Date(birthday).getFullYear();
+      
+      return thisYear - userYear;
+      
+    }
+  
+
+  }
+
+  // Skapa objekt/instanser
+  let user1 = new User("Mahmud" , "1973 02 02");
+
+  user1.username = "mah1973"
+  console.log(user1.username); // mah1973
+  // OBS! username är en public egenskap här!
+
+
+  // Ändra en publik egenskap
+  user1.username = "yas1976";
+  console.log(user1.username); // yas1976
+  
+
+  console.log( user1.sayHi() ); // Hello Mahmud
+  
+  </script>
+
+</body>
+</html>

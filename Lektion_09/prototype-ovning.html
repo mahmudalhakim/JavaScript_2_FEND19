@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Point</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      #result {
+        font: 2em sans-serif;
+        color: brown;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <h1>Arbeta med prototyper</h1>
+    <h2>Övning – Point</h2>
+    <ol>
+      <li>Skapa en konstruktor som beskriver en punkt i en tvådimensionell värld.</li>
+      <li>Skapa en metod i prototypen som beräknar avståndet mellan två punkter.</li>
+      <li>Skapa två punkter(två objekt).</li>
+      <li>Beräkna avståndet mellan punkterna.</li>
+    </ol>
+
+    <hr>
+
+    <div class="row">
+      <div class="col">
+        <h2>Punkt A</h2>
+        <p>
+          <h3>x:</h3>  
+          <input type="number" id="x1" value="0" class="form-control">
+        </p>
+        <p>
+          <h3>y:</h3> 
+          <input type="number" id="y1" value="0" class="form-control">
+        </p>
+      </div>
+
+      <div class="col">
+        <h2>Punkt B</h2>
+        <p>
+          <h3>x:</h3> 
+          <input type="number" id="x2" value="0" class="form-control">
+        </p>
+        <p>
+          <h3>y:</h3> 
+          <input type="number" id="y2" value="0" class="form-control">
+        </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col">
+        <button id="calc" class="btn btn-outline-success w-100">Beräkna avståndet</button>
+      </div>
+      <div class="col">
+        <span id="result"></span>
+      </div>
+    </div>
+
+
+
+    <script>
+
+
+      // Skapa en konstruktor som besrkiver en punkt
+      function Point(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+
+      // Skapa en metod i prototypen som beräknar avståndet
+      // mellan två punkter.
+
+      Point.prototype.distance = function(p) {
+        const dx = this.x - p.x;
+        const dy = this.y - p.y;
+        return Math.sqrt(dx ** 2 + dy ** 2);
+      };
+
+      // Point 1
+      const x1 = document.querySelector("#x1");
+      const y1 = document.querySelector("#y1");
+
+      // Point 2
+      const x2 = document.querySelector("#x2");
+      const y2 = document.querySelector("#y2");
+
+      // Knappen
+      const calcBtn = document.querySelector("#calc");
+
+      // Resultatet
+      const result = document.querySelector("#result");
+
+      // Koppla händelsehanterare (Event Listeners)
+      window.addEventListener('load' , calcuate);
+      calcBtn.addEventListener('click', calcuate);
+
+      function calcuate() {
+
+        // Skapa två punkter(två objekt).
+        const p1 = new Point(x1.value, y1.value);
+        console.log(p1);
+
+        const p2 = new Point(x2.value, y2.value);
+        console.log(p2);
+
+        // Beräkna avståndet mellan punkterna.
+        const distance = p1.distance(p2);
+
+        console.log(distance);
+
+        // Visa resultatet
+        result.textContent = "Avståndet: " + distance.toFixed(2);
+      }
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arbeta med konstruktorer</title>
+  </head>
+  <body>
+    <h1>Arbeta med konstruktorer</h1>
+    <h2>Övning</h2>
+    <ol>
+      <li>
+        Konvertera egenskaperna name och birthday till publika egenskaper!
+      </li>
+      <li>
+        Konvertera metoden calcAge() till en publik metod.
+      </li>
+      <li>
+        3. Skapa några olika objekt och testa alla metoder.
+      </li>
+    </ol>
+
+    <script>
+      function User(name, birthday) {
+
+        // 1. Konvertera egenskaperna name och birthday
+        //  till publika egenskaper!
+        this.name = name;
+        this.birthday = birthday;
+
+
+        // 2. Konvertera metoden calcAge() 
+        this.sayHi = function() {
+          return `Hello ${this.name}, age: ${this.calcAge()}`;
+        };
+        
+        // till en publik metod.
+        this.calcAge = function () {
+          let birthDate = new Date(birthday);
+          return new Date().getFullYear() - birthDate.getFullYear();
+        }
+
+      }
+
+
+      // 3. Skapa några olika objekt och testa alla metoder.
+      const user1 = new User("Mahmud", "1973 02 02");
+      const user2 = new User("Yasmin", "1975 06 06");
+
+      // Testa metoder
+      console.log( user1.calcAge() );
+
+      let age2 = user2.calcAge();
+      console.log(age2);
+
+      console.log(user1.sayHi());
+      console.log(user2.sayHi());
+      
+      // Testa egenskaper
+      console.log(user1.name);
+      console.log(user1.birthday);
+      
+      console.log(user2.name);
+      console.log(user2.birthday);
+      
+      // Skriv ut alla objekt
+      console.log(user1);
+      console.log(user2);
+      
+
+
+      
+
+
+
+    </script>
+
+  </body>
+</html>

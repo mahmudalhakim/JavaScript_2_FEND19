@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Prototypkedja</title>
+  </head>
+  <body>
+    <h1>Prototypkedja</h1>
+
+    <script>
+
+      // En prototyp som beskriver ett djur
+
+      function Animal(name) {
+        this.name = name;
+      }
+
+      Animal.prototype.eat = function() {
+        // return `${this.name} eats.`;
+        return this.name + " eats.";
+      };
+
+      // Skapa ett djur (ett objekt)
+      let animal = new Animal("My animal");
+      console.log(animal.eat());
+
+
+      
+      // En prototyp som beskriver en kanin
+      function Rabbit(name) {
+        this.name = name;
+      }
+
+      // En kanin (Rabbit) ärver från ett djur (Animal)
+      // Då får vi tillgång till alla metoder som finns i Animal
+      // OBS! Sätt detta före kaninens egna metoder!
+      Rabbit.prototype = Object.create(Animal.prototype);
+
+      Rabbit.prototype.jump = function() {
+        return `${this.name} jumps!`;
+      };
+
+      let rabbit = new Rabbit("My rabbit");
+      console.log(rabbit.jump());
+      console.log(rabbit.eat());
+
+
+    </script>
+  </body>
+</html>

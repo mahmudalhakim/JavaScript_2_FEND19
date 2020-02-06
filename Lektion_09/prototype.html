@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arbeta med prototyper</title>
+  </head>
+  <body>
+    <h1>Arbeta med prototyper</h1>
+
+    <h2>OBS! Viktigt</h2>
+
+    <script>
+      function User(name, birthday) {
+        this.name = name;
+        this.birthday = birthday;
+      }
+
+      User.prototype.sayHi = function() {
+        return `Hello ${this.name}, age: ${this.calcAge()}`;
+      };
+
+
+      User.prototype.calcAge = function() {
+        let birthDate = new Date(this.birthday);
+        return new Date().getFullYear() - birthDate.getFullYear();
+      };
+
+
+
+      // Skapa några olika objekt och testa alla metoder.
+      const user1 = new User("Mahmud", "1973 02 02");
+      const user2 = new User("Yasmin", "1975 06 06");
+
+      // Testa metoder
+      console.log(user1.calcAge());
+
+      let age2 = user2.calcAge();
+      console.log(age2);
+
+      console.log(user1.sayHi());
+      console.log(user2.sayHi());
+
+      // Testa egenskaper
+      console.log(user1.name);
+      console.log(user1.birthday);
+
+      console.log(user2.name);
+      console.log(user2.birthday);
+
+      // Skriv ut alla objekt
+      console.log(user1);
+      console.log(user2);
+      
+    </script>
+  </body>
+</html>
