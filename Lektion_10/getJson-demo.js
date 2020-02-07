@@ -57,11 +57,6 @@ $(document).ready( function () {
 
     // Vanilla JS
     // document.getElementById('showTable').innerHTML = table;
-
-
-    // Skapa 
-    
-    
     
   }).fail(function() {
     console.error( "Fel vid läsning av JSON!" );
