@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet" 
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Inköpslista</title>
+  </head>
+  <body class="container" style="max-width:500px;">
+    <div
+      class="w3-card-2"
+      ng-app="myShoppingList"
+      ng-controller="myCtrl"
+      ng-cloak
+    >
+    <!-- 
+      Vad är ng-cloak?
+      https://docs.angularjs.org/api/ng/directive/ngCloak
+    -->
+      <h3 class="text-center display-3 text-info">Min inköpslista</h3>
+      <ul class="list-group">
+        <li
+          ng-repeat="product in products"
+          class="list-group-item d-flex justify-content-between"
+        >
+          {{ product }}
+
+          <!-- 
+            Vid klick skicka product eller $index till removeItem() 
+            Att skicka $index underlättar kodningen av removeItem
+            OBS! Du behöver inte skicka både product och $index
+            Vad är $index?
+            https://docs.angularjs.org/api/ng/directive/ngRepeat
+          -->
+          <a
+            ng-click="removeItem(product, $index)" 
+            style="cursor:pointer;"
+            class="text-danger"
+            >
+            &times;  <!--  &times; är tecknet (×) --> 
+          </a>
+        </li>
+      </ul>
+
+      <input
+        placeholder="Vad vill du handla idag"
+        class="form-control form-control-lg  my-3"
+        ng-model="addMe"
+        ng-keydown="$event.which === 13 && addItem()"
+      />
+      <!-- 
+        ng-keydown testar om man trycker på Enter
+        I så fall körs metoden addItem()
+      -->
+
+      <button 
+        class="btn btn-outline-success w-100"
+        ng-click="addItem()" 
+      >
+        Lägg till
+      </button>
+
+      <p class="text-danger text-center">
+        {{errortext}}
+      </p>
+    
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="angularjs_todo.js"></script>
+    
+  </body>
+</html>
