@@ -1,28 +1,66 @@
-$(document).ready(function() {
+$(document).ready( function () {
 
-  $.getJSON('getJson-demo.json', function (data, status, xhr){
-    console.log(data);
-    console.log(status);
-    console.log(xhr);
+  $.getJSON('getJSON-demo.json', function(data){
     
-    data.forEach(element => {
-      console.log(element);
+    // Skriv ut resultatet (response)
+    console.log(data);
+
+    // Skriv ut det första objektet
+    console.log(data[0]);   
+
+    // Skriv ut namnet från objektet
+    console.log(data[0].name);
+    
+    // Skriv ut e-post från objektet
+    console.log(data[0].email);
+
+    // Visa alla namn
+    data.forEach( element => {
+      // console.log(element);
       console.log(element.name);
+    });
+
+    // Visa alla e-postadresser
+    data.forEach( element => {
       console.log(element.email);
     });
 
-    let output = '<table class="table table-striped table-hover">';
-    output += '<thead class="thead-dark"><tr><th>Name</th><th>Email</th></tr></thead>';
-    data.forEach(element => {
-      output += `
-                <tr>
-                  <td>${element.name}</td>
-                  <td>${element.email}</td>
-                </tr>`;
+    // Visa både namn och e-postadresser
+    data.forEach( element => {
+      console.log(element.name + ', ' + element.email);
     });
-    output += '<table>';
 
-    document.getElementById('table').innerHTML = output;
+    // Skapa en sträng som innehåller all info
+    // Strängen ska innehålla en tabell
+    let table = '<table class="table table-striped table-hover">';
+    table += `<thead class="thead-dark">
+                <tr>
+                  <th>Namn</th>
+                  <th>E-post</th>
+                </tr>
+              </thead>
+    `;
 
+    data.forEach( person => {
+      table += `<tr>
+                  <td>${person.name}</td>
+                  <td>${person.email}</td>
+                </tr>
+      `;
+    })
+
+    table += '</table>';
+
+    console.log(table);
+
+    $('#showTable').html(table);
+
+    // Vanilla JS
+    // document.getElementById('showTable').innerHTML = table;
+
+    
+    
+    
   });
+
 });
