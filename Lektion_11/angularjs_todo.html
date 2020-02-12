@@ -13,31 +13,36 @@
   <body class="container" style="max-width:500px;">
     <div
       class="w3-card-2"
-      ng-app="myShoppingList"
-      ng-controller="myCtrl"
-      ng-cloak
+      data-ng-app="myShoppingList"
+      data-ng-controller="myCtrl"
+      data-ng-cloak
     >
     <!-- 
       Vad är ng-cloak?
       https://docs.angularjs.org/api/ng/directive/ngCloak
+
+      Varför har du lagt data inför alla ng-direktiv?
+      https://www.w3schools.com/angular/angular_intro.asp
+      You can use data-ng-, instead of ng-, 
+      if you want to make your page HTML valid.
     -->
       <h3 class="text-center display-3 text-info">Min inköpslista</h3>
       <ul class="list-group">
         <li
-          ng-repeat="product in products"
+          data-ng-repeat="product in products"
           class="list-group-item d-flex justify-content-between"
         >
           {{ product }}
 
           <!-- 
-            Vid klick skicka product eller $index till removeItem() 
+            Vid klick skickas product eller $index till removeItem() 
             Att skicka $index underlättar kodningen av removeItem
             OBS! Du behöver inte skicka både product och $index
             Vad är $index?
             https://docs.angularjs.org/api/ng/directive/ngRepeat
           -->
           <a
-            ng-click="removeItem(product, $index)" 
+            data-ng-click="removeItem(product, $index)" 
             style="cursor:pointer;"
             class="text-danger"
             >
@@ -49,8 +54,8 @@
       <input
         placeholder="Vad vill du handla idag"
         class="form-control form-control-lg  my-3"
-        ng-model="addMe"
-        ng-keydown="$event.which === 13 && addItem()"
+        data-ng-model="addMe"
+        data-ng-keydown="$event.which === 13 && addItem()"
       />
       <!-- 
         ng-keydown testar om man trycker på Enter
@@ -59,7 +64,7 @@
 
       <button 
         class="btn btn-outline-success w-100"
-        ng-click="addItem()" 
+        data-ng-click="addItem()" 
       >
         Lägg till
       </button>

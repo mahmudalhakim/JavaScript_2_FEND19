@@ -10,12 +10,14 @@ app.controller("myCtrl", function($scope) {
     // Metoden addItem lägger till en produkt i arrayen
     $scope.addItem = function () {
 
+      // Test
       console.log($scope);
       console.log($scope.products);
       console.log($scope.addMe);
       
-        // Om inputfältet är tomt avsluta
+        // Om inputfältet är tomt visa ett felmeddelande och avsluta
         if (!$scope.addMe) {
+          $scope.errortext = "Skriv minst ett tecken tack!";
           return;
         }
 
@@ -47,6 +49,10 @@ app.controller("myCtrl", function($scope) {
 
         $scope.errortext = "";
         $scope.products.splice(index, 1);
+        
+        // Vad är splice?
+        // The splice() method adds/removes items to/from an array, and returns the removed item(s).
+        // https://www.w3schools.com/jsref/jsref_splice.asp
     }
 
 });
