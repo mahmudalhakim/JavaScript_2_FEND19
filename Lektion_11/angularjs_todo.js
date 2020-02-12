@@ -36,6 +36,9 @@ app.controller("myCtrl", function($scope) {
 
         // Rensa inputfältet 
         $scope.addMe = "";
+        
+        // Autofocus input-fältet
+        document.getElementById('input').focus();
 
     }
 
